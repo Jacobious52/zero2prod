@@ -33,6 +33,11 @@ jobs:
       - uses: actions-rs/cargo@v1
         with:
           command: test
+      - name: Check sqlx metadata file
+        run: cargo sqlx prepare --check -- --bin zero2prod
+      - uses: actions-rs/cargo@v1
+        with:
+          command: test
 
   fmt:
     name: Rustfmt
